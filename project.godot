@@ -1,20 +1,9 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
 config_version=5
 
 [application]
 
-config/name="Skeleton2D Demo"
-config/description="This demo shows how to create a rigged and animated character in 2D using
-Godot's Skeleton2D node. There are several movement-related animations and
-there is a simple character controller that controls the animations."
-config/tags=PackedStringArray("2d", "animation", "demo", "official", "rendering")
+config/name="BasketBallJam1"
+config/tags=PackedStringArray("2d", "animation")
 run/main_scene="res://level.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.webp"
@@ -25,6 +14,11 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+
+[editor]
+
+version_control/plugin_name="git"
+version_control/autoload_on_startup=true
 
 [input]
 

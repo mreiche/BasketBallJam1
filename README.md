@@ -11,3 +11,6 @@ GBot character Copyright &copy; circa 2020 Andreas Esau, MIT License.
 
 Initial rigging and animating Copyright &copy; 2020 RustyStriker, MIT License.
 
+## Assets used
+- https://opengameart.org/content/sports-balls
+
