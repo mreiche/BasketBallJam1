@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0dcakpphuuc5"]
 
 [ext_resource type="TileSet" uid="uid://dlu6wo1aknvai" path="res://level/tileset/tileset.tres" id="1_0yenw"]
-[ext_resource type="Script" path="res://level/level.gd" id="1_bccge"]
+[ext_resource type="Script" uid="uid://d0w4mmumuvv8l" path="res://level/level.gd" id="1_bccge"]
 [ext_resource type="PackedScene" uid="uid://c657hgr7fcptm" path="res://player/player.tscn" id="4"]
 [ext_resource type="PhysicsMaterial" uid="uid://b6axetqguae5k" path="res://new_physics_material.tres" id="4_dg5gs"]
 [ext_resource type="Texture2D" uid="uid://dt3b1uc0x2udh" path="res://ball/basket_ball.png" id="4_gat6x"]
@@ -21,10 +21,11 @@ layer_0/tile_data = PackedInt32Array(524306, 1, 1, 524305, 1, 1, 524304, 1, 1, 5
 
 [node name="Spieler1" parent="." instance=ExtResource("4")]
 position = Vector2(-284, 172)
-collision_mask = 29
+collision_mask = 19
 
 [node name="Spieler2" parent="." instance=ExtResource("4")]
 position = Vector2(259, 171)
+collision_mask = 31
 move_right_action = "move_right2"
 move_left_action = "move_left2"
 move_up_action = "jump2"

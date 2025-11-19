@@ -35,11 +35,14 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	var is_jumping = false
+	#var velocity = Vector2.ZERO
+	
 	if Input.is_action_just_pressed(move_up_action):
 		is_jumping = try_jump()
 	elif Input.is_action_just_released(move_up_action) and velocity.y < 0.0:
 		# The player let go of jump early, reduce vertical momentum.
 		velocity.y *= 0.6
+
 	# Fall.
 	velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
 
@@ -57,9 +60,26 @@ func _physics_process(delta: float) -> void:
 		else:
 			sprite.scale.x = -1.0 * sprite_scale
 
-	move_and_slide()
+	if name == "Spieler1":
+		print(velocity)
 
-	# After applying our motion, update our animation to match.
+	#var collide = move_and_collide(velocity*delta)
+	#if collide:
+		#var body := collide.get_collider()
+		#if body.name == "Ball":
+			#body.apply_impulse(velocity)
+			#print(collide)
+
+	var velocity_before := velocity
+	move_and_slide()
+	
+	for index in get_slide_collision_count():
+		var collision := get_slide_collision(index)
+		var body := collision.get_collider()
+		if body.name == "Ball":
+			print("Collided with: ", body.name, velocity_before)
+			body.apply_impulse(velocity_before)
+		
 
 	# Calculate falling speed for animation purposes.
 	if velocity.y >= TERMINAL_VELOCITY:
@@ -103,3 +123,7 @@ func try_jump() -> bool:
 		velocity.y = JUMP_VELOCITY
 		return true
 	return false
+
+
+func _on_RigidBody2D_body_entered(body):
+	print("Kollision mit: ", body.name)

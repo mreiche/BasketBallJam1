@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://c657hgr7fcptm"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://dllqty2ptmlh2" path="res://player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cgnjku7sa0qyt" path="res://player/gBot.png" id="2"]
 
 [sub_resource type="Animation" id="1"]
@@ -1654,14 +1654,14 @@ tracks/16/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sx6h1"]
 _data = {
-"fall": SubResource("1"),
-"fly": SubResource("2"),
-"idle": SubResource("3"),
-"jump": SubResource("4"),
-"land": SubResource("5"),
-"land_hard": SubResource("6"),
-"run": SubResource("7"),
-"walk": SubResource("8")
+&"fall": SubResource("1"),
+&"fly": SubResource("2"),
+&"idle": SubResource("3"),
+&"jump": SubResource("4"),
+&"land": SubResource("5"),
+&"land_hard": SubResource("6"),
+&"run": SubResource("7"),
+&"walk": SubResource("8")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="9"]
@@ -1702,18 +1702,23 @@ animation = &"run"
 xfade_time = 0.1
 input_0/name = "idle"
 input_0/auto_advance = false
+input_0/break_loop_at_end = false
 input_0/reset = true
 input_1/name = "walk"
 input_1/auto_advance = false
+input_1/break_loop_at_end = false
 input_1/reset = true
 input_2/name = "run"
 input_2/auto_advance = false
+input_2/break_loop_at_end = false
 input_2/reset = true
 input_3/name = "fly"
 input_3/auto_advance = false
+input_3/break_loop_at_end = false
 input_3/reset = true
 input_4/name = "fall"
 input_4/auto_advance = false
+input_4/break_loop_at_end = false
 input_4/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="21"]
@@ -1722,6 +1727,7 @@ animation = &"walk"
 [sub_resource type="AnimationNodeTimeScale" id="22"]
 
 [sub_resource type="AnimationNodeBlendTree" id="23"]
+nodes/output/position = Vector2(1866.67, 666.667)
 nodes/fall_animation/node = SubResource("9")
 nodes/fall_animation/position = Vector2(533.333, 973.333)
 nodes/fly_animation/node = SubResource("10")
@@ -1740,7 +1746,6 @@ nodes/land_hard/node = SubResource("16")
 nodes/land_hard/position = Vector2(1680, 666.667)
 nodes/land_hard_animation/node = SubResource("17")
 nodes/land_hard_animation/position = Vector2(1453.33, 506.667)
-nodes/output/position = Vector2(1866.67, 666.667)
 nodes/run_animation/node = SubResource("18")
 nodes/run_animation/position = Vector2(533.333, 746.667)
 nodes/run_timescale/node = SubResource("19")
@@ -1751,10 +1756,10 @@ nodes/walk_animation/node = SubResource("21")
 nodes/walk_animation/position = Vector2(533.333, 626.667)
 nodes/walk_timescale/node = SubResource("22")
 nodes/walk_timescale/position = Vector2(720, 626.667)
-node_connections = [&"jump", 0, &"state", &"jump", 1, &"jump_animation", &"land", 0, &"jump", &"land", 1, &"land_animation", &"land_hard", 0, &"land", &"land_hard", 1, &"land_hard_animation", &"output", 0, &"land_hard", &"run_timescale", 0, &"run_animation", &"state", 0, &"idle_animation", &"state", 1, &"walk_timescale", &"state", 2, &"run_timescale", &"state", 3, &"fly_animation", &"state", 4, &"fall_animation", &"walk_timescale", 0, &"walk_animation"]
+node_connections = [&"output", 0, &"land_hard", &"jump", 0, &"state", &"jump", 1, &"jump_animation", &"land", 0, &"jump", &"land", 1, &"land_animation", &"land_hard", 0, &"land", &"land_hard", 1, &"land_hard_animation", &"run_timescale", 0, &"run_animation", &"state", 0, &"idle_animation", &"state", 1, &"walk_timescale", &"state", 2, &"run_timescale", &"state", 3, &"fly_animation", &"state", 4, &"fall_animation", &"walk_timescale", 0, &"walk_animation"]
 
 [sub_resource type="RectangleShape2D" id="24"]
-size = Vector2(22, 34.908)
+size = Vector2(22, 49)
 
 [node name="SkeletalPlayer" type="CharacterBody2D"]
 collision_mask = 28
@@ -1765,7 +1770,7 @@ script = ExtResource("1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_sx6h1")
+&"": SubResource("AnimationLibrary_sx6h1")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -1951,5 +1956,5 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.776211, -15.454)
+position = Vector2(0.776211, -22.5)
 shape = SubResource("24")
